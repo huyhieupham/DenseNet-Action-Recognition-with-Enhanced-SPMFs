@@ -1,2 +1,5 @@
-# DenseNet-Action-Recognition-with-Enhanced-SPMFs
-This repository will include the codes and pre-trained model for ECCV 2018 paper: "Skeletal Movement to Enhanced Color Map: A Novel Representation for RGB-D based 3D Human Action Recognition with DenseNets" by Huy-Hieu Pham, Louahdi Khoudour, Alain Crouzil, Pablo Zegers, and Sergio A. Velastin.
+# DenseNet Action Recognition with Enhanced-SPMFs
+
+**Introduction**
+
+This repository will include the codes and pre-trained model for ECCV 2018 paper: "Skeletal Movement to Enhanced Color Map: A Novel Representation for RGB-D based 3D Human Action Recognition with DenseNets" by Huy-Hieu Pham, Louahdi Khoudour, Alain Crouzil, Pablo Zegers, and Sergio A. Velastin. We will publish our code and pre-trained models upon the paper is accepted.
