@@ -1,5 +1,3 @@
-# Huy-Hieu PHAM, Ph.D. student
-# DenseNet for image recognition.
 # Python 3.5.2 using Keras with the Tensorflow Backend.
 # Created on 03.08.2018
 
@@ -109,7 +107,7 @@ history = model.fit_generator(train_generator,
                               )
 
 # Saving weight.
-model.save_weights('DenseNet-BC-190-40-MSR-Action3D-AS1.h5')
+model.save_weights('DenseNet-40-MSR-Action3D-AS1.h5')
 
 
 
@@ -178,7 +176,7 @@ plt.figure()
 plot_confusion_matrix(cnf_matrix, classes =['Horizontal arm wave', 'Hammer', 'Forward punch', 'High throw', 'Hand clap', 'Bend', 'Tennis serve', 'Pickup & throw'], normalize=True,
                       title='Confusion Matrix on MSR Action3D/AS1')
 
-plt.savefig('output/AS1/Confusion-Matrix-DenseNet-BC-190-40-MSR-Action3D-AS1.png')
+plt.savefig('output/AS1/Confusion-Matrix-DenseNet-40-MSR-Action3D-AS1.png')
 
 # List all data in history.
 print(history.history.keys())
@@ -207,5 +205,5 @@ plt.ylabel('Training Loss and Test Accuracy',fontsize=10, fontweight='bold',colo
 plt.legend()
 
 # Save the figure.
-plt.savefig('output/AS1/DenseNet-BC-190-40-MSR-Action3D-AS1.png')
+plt.savefig('output/AS1/DenseNet-40-MSR-Action3D-AS1.png')
 plt.show()
