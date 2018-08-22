@@ -1,4 +1,4 @@
-# DenseNet Action Recognition with Enhanced-SPMFs
+# Human Action Recognition with Enhanced-SPMFs
 
 **Introduction**
 
