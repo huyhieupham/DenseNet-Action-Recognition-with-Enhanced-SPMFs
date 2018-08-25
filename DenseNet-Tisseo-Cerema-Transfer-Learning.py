@@ -1,7 +1,7 @@
 # Huy-Hieu PHAM, Ph.D student
 # Cerema & Institut de Recherche en Informatique de Toulouse (IRIT)
 # Description: Training Inception V-4 model from human action recognition.
-# Date: 31 / 07 / 2018
+# Date: 15 / 08 / 2018
 # Python 3.5.2, Keras 2.0.8 with Tensorflow backend.
 
 
@@ -29,7 +29,9 @@ import keras.backend as K
 import json
 import time
 
- 
+# Number of action classes on the Tisseo_Cerema dataset.
+nb_classes = 3
+	
 # Learning rate schedule.
 def step_decay(epoch):
 	initial_lrate = 0.001
@@ -66,7 +68,7 @@ new_model_1 = Model(model.inputs, model.layers[-2].output)
 new_model_1.summary()
 
 x = new_model_1.output
-predictions = Dense(3, activation="softmax")(x)
+predictions = Dense(nb_classes, activation="softmax")(x)
 new_model_2 = Model(model.inputs, output=predictions)
 
 new_model_2.summary()
