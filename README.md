@@ -9,7 +9,7 @@ This repository includes the codes and pre-trained models for the paper: "**_Fro
 **Requirements**
 
 
-In onder to train the deep neural networksin our experiments, you need to download and install [Keras](http://www.vlfeat.org/) with [TensorFlow](https://www.tensorflow.org/) as the backend. Then navigate to the working folder and start to train DenseNets on GPU by the following commande:
+In order to train the deep neural networksin our experiments, you need to download and install [Keras](http://www.vlfeat.org/) with [TensorFlow](https://www.tensorflow.org/) as the backend. Then navigate to the working folder and start to train DenseNets on GPU by the following commande:
 
 
  ```python file_name.py ```
