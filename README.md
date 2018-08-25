@@ -21,4 +21,4 @@ In onder to train the deep neural networksin our experiments, you need to downlo
 
 **Experimental results**
 
-(will be upadted as soon as possible upon publication.)
+(will be updated as soon as possible upon publication.)
