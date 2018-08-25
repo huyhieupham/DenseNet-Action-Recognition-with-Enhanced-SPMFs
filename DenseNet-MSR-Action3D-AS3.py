@@ -1,7 +1,6 @@
-# Huy-Hieu PHAM, Ph.D. student
-# DenseNet for image recognition.
 # Python 3.5.2 using Keras with the Tensorflow Backend.
-# Created on 25.01.2018
+# Created on 04.08.2018, by Huy-Hieu PHAM, Cerema & IRIT, France.
+
 
 
 from __future__ import print_function
@@ -33,7 +32,7 @@ from sklearn.metrics import confusion_matrix
 # Load and process data.
 nb_classes = 8
 
-# learning rate schedule
+# Learning rate schedule.
 def step_decay(epoch):
 	initial_lrate = 0.001
 	drop = 0.1
@@ -41,13 +40,13 @@ def step_decay(epoch):
 	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
 	return lrate
 
-# Number of samples in AS3 [3663;2331] 
+# Number of samples in AS3 [3663;2331].
 img_width, img_height = 32, 32
 train_data_dir = 'data/MSR-Action3D/AS3/train'
 validation_data_dir = 'data/MSR-Action3D/AS3/validation'
 nb_train_samples = 3663
 nb_validation_samples = 2331
-epochs = 300
+epochs = 250
 batch_size = 128
 
 if K.image_data_format() == 'channels_first':
@@ -69,12 +68,12 @@ else:
 # Model output.
 model.summary()
 	
-# Compile the model.
+# Compile the model, using the initial learning rate of 3e-4.
 model.compile(optimizer=Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
               loss = 'sparse_categorical_crossentropy',
               metrics = ['accuracy'])
 
-# learning schedule callback
+# Learning schedule callback.
 lrate = LearningRateScheduler(step_decay)
 callbacks_list = [lrate]
 
@@ -113,7 +112,7 @@ history = model.fit_generator(train_generator,
                               verbose=2)
 
 # Saving weight.
-model.save_weights('output/AS3/DenseNet-BC-100-12-MSR-Action3D-AS3.h5')
+model.save_weights('output/AS3/DenseNet-40-AS3.h5')
 
 datagen = ImageDataGenerator(rescale = 1./255)
 generator = datagen.flow_from_directory('data/MSR-Action3D/AS3/validation',
@@ -176,7 +175,7 @@ plt.figure()
 plot_confusion_matrix(cnf_matrix, classes =['High throw', 'Forward kick', 'Side kick', 'Jogging', 'Tennis swing', 'Tennis serve', 'Golf swing', 'Pickup & throw'], normalize=True,
                       title='Confusion Matrix for MSR Action3D/AS3')
 
-plt.savefig('output/AS3/Confusion-Matrix-DenseNet-BC-100-12-MSR-Action3D-AS3.png')
+plt.savefig('output/AS3/Confusion-Matrix-DenseNet-40-AS3.png')
 
 # List all data in history.
 print(history.history.keys())
@@ -199,11 +198,11 @@ axes = plt.gca()
 axes.set_ylim([0.0,1.2])
 plt.plot(N, H['loss'],linewidth=2.5,label=train_loss,color='blue')
 plt.plot(N, H['val_acc'],linewidth=2.5, label=test_acc,color='red')
-plt.title('DenseNet-BC (L=100, k=12) on MSR Action3D/AS3',fontsize=10, fontweight='bold',color = 'Gray')
+plt.title('DenseNet-40 on MSR Action3D/AS3',fontsize=10, fontweight='bold',color = 'Gray')
 plt.xlabel('Number of Epochs',fontsize=10, fontweight='bold',color = 'Gray')
 plt.ylabel('Training Loss and Test Accuracy',fontsize=10, fontweight='bold',color = 'Gray')
 plt.legend()
 
 # Save the figure.
-plt.savefig('output/AS3/DenseNet-BC-100-12-MSR-Action3D-AS3.png')
+plt.savefig('output/AS3/DenseNet-40-MSR-Action3D-AS3.png')
 plt.show()
