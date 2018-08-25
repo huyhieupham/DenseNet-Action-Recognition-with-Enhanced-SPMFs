@@ -1,7 +1,5 @@
-# Huy-Hieu PHAM, Ph.D. student
-# DenseNet for image recognition.
 # Python 3.5.2 using Keras with the Tensorflow Backend.
-# Created on 25.01.2018
+# Created on 12.08.2018, by Huy-Hieu PHAM, Cerema & IRIT, France.
 
 
 from __future__ import print_function
@@ -33,7 +31,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import confusion_matrix
 
 # Load and process data.
-nb_classes = 8
+nb_classes = 3
 
 # learning rate schedule
 def step_decay(epoch):
@@ -50,7 +48,7 @@ validation_data_dir = 'data/tisseo/validation'
 nb_train_samples = 2539
 nb_validation_samples = 2536
 epochs = 250
-batch_size = 256
+batch_size = 128
 
 if K.image_data_format() == 'channels_first':
     input_shape = (3, img_width, img_height)
@@ -59,8 +57,8 @@ else:
 
 
     # Construct DenseNet architeture.
-    model = densenet.DenseNet(nb_classes,       # Number of classes: 8 for MSR Action3D and 60 for NTU-RGB+D.
-                              input_shape,   	# Input_shape.
+    model = densenet.DenseNet(nb_classes,       
+                              input_shape,   	
                               40,				# Depth: int -- how many layers; "Depth must be 3*N + 4"
                               3,				# nb_dense_block: int -- number of dense blocks to add to end
                               12,				# growth_rate: int -- number of filters to add
@@ -103,8 +101,7 @@ history = model.fit_generator(train_generator,
                               validation_data=validation_generator,
                               validation_steps=nb_validation_samples // batch_size,
                               callbacks=callbacks_list,
-							  verbose=2
-                              )
+			      verbose=2)
 
 # Saving weight.
 model.save_weights('DenseNet-40-Tisseo.h5')
@@ -138,5 +135,5 @@ plt.ylabel('Training Loss and Test Accuracy',fontsize=12, fontweight='bold',colo
 plt.legend()
  
 # Save the figureL
-plt.savefig('output/tisseo/Enhanced-SPMF-DenseNet-40.png')
+plt.savefig('output/tisseo/Enhanced-SPMF-DenseNet-40-Tisseo-Cerema.png')
 plt.show()
