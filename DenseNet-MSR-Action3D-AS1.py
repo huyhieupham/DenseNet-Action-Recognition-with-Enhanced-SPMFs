@@ -1,5 +1,5 @@
 # Python 3.5.2 using Keras with the Tensorflow Backend.
-# Created on 03.08.2018
+# Created on 03.08.2018, by Huy-Hieu PHAM, Cerema & IRIT, France.
 
 
 from __future__ import print_function
@@ -33,7 +33,7 @@ from sklearn.metrics import confusion_matrix
 # Load and process data.
 nb_classes = 8
 
-# learning rate schedule
+# Learning rate schedule.
 def step_decay(epoch):
 	initial_lrate = 0.001
 	drop = 0.1
@@ -47,7 +47,7 @@ train_data_dir = 'data/MSR-Action3D/AS1/train'
 validation_data_dir = 'data/MSR-Action3D/AS1/validation'
 nb_train_samples = 3762
 nb_validation_samples = 2205
-epochs = 300
+epochs = 250
 batch_size = 128
 
 if K.image_data_format() == 'channels_first':
@@ -57,7 +57,7 @@ else:
 
 
     # Construct DenseNet architeture.
-    model = densenet.DenseNet(nb_classes,                       # Number of classes: 8 for MSR Action3D and 60 for NTU-RGB+D.
+    model = densenet.DenseNet(nb_classes,                       # Number of classes: 8 for MSR Action3D, 60 for NTU-RGB+D and 3 for Tisseo-Cerema. 
                               input_shape,   	                # Input_shape.
                               40,				# Depth: int -- how many layers; "Depth must be 3*N + 4"
                               3,				# nb_dense_block: int -- number of dense blocks to add to end
@@ -71,13 +71,13 @@ else:
 # Model output.
 model.summary()
 	
-# Compile the model.
+# Compile the model, using the initial learning rate of 3e-4.
 model.compile(optimizer=Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
               loss = 'sparse_categorical_crossentropy',
               metrics = ['accuracy'])
 				  
 
-# learning schedule callback
+# Learning schedule callback.
 lrate = LearningRateScheduler(step_decay)
 callbacks_list = [lrate]
 
@@ -107,9 +107,7 @@ history = model.fit_generator(train_generator,
                               )
 
 # Saving weight.
-model.save_weights('DenseNet-40-MSR-Action3D-AS1.h5')
-
-
+model.save_weights('DenseNet-40-AS1.h5')
 
 from datetime import datetime
 start=datetime.now()
