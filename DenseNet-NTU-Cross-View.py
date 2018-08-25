@@ -1,8 +1,5 @@
-# Huy-Hieu PHAM, Ph.D. student
-# DenseNet for image recognition.
 # Python 3.5.2 using Keras with the Tensorflow Backend.
-# Created on 25.01.2018
-
+# Created on 08.08.2018, by Huy-Hieu PHAM, Cerema & IRIT, France.
 
 from __future__ import print_function
 
@@ -34,7 +31,7 @@ from sklearn.metrics import confusion_matrix
 # Load and process data.
 nb_classes = 60
 
-# learning rate schedule
+# Learning rate schedule.
 def step_decay(epoch):
 	initial_lrate = 0.001
 	drop = 0.1
@@ -69,7 +66,7 @@ else:
 # Model output.
 model.summary()
 	
-# Compile the model.
+# Compile the model, using the initial learning rate of 3e-4.
 model.compile(optimizer=Adam(lr=0.0003, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
               loss = 'sparse_categorical_crossentropy',
               metrics = ['accuracy'])
@@ -104,7 +101,7 @@ history = model.fit_generator(train_generator,
 							  
 
 # Saving weight.
-model.save_weights('output/Cross-View/DenseNet-BC-100-12-NTU-CV.h5')
+model.save_weights('output/Cross-View/DenseNet-16-NTU-CV.h5')
 
 # Loading test data for prediction.
 datagen = ImageDataGenerator(rescale = 1./255)
@@ -185,7 +182,7 @@ plot_confusion_matrix(cnf_matrix, classes = ['Drinking 1', 'Eating 2', 'Brushing
                                              'Touching other persons pocket 57', 'Handshaking 58', 'Walking towards each other 59', 'Walking apart from each other 60'], normalize=True,
                                              title='Confusion Matrix for NTU-RGB+D/Cross-View')
 
-plt.savefig('output/Cross-View/Confusion-Matrix-DenseNet-BC-100-12-NTU-CV.png')
+plt.savefig('output/Cross-View/Confusion-Matrix-DenseNet-16-NTU-CV.png')
 
 # List all data in history.
 print(history.history.keys())
@@ -208,11 +205,11 @@ axes = plt.gca()
 axes.set_ylim([0.0,2.0])
 plt.plot(N, H['loss'],linewidth=2.5,label=train_loss,color='blue')
 plt.plot(N, H['val_acc'],linewidth=2.5, label=test_acc,color='red')
-plt.title('DenseNet-BC (L=100, k=12) on NTU-RGB+D/Cross-View',fontsize=10, fontweight='bold',color = 'Gray')
+plt.title('DenseNet-16 on NTU-RGB+D/Cross-View',fontsize=10, fontweight='bold',color = 'Gray')
 plt.xlabel('Number of Epochs',fontsize=10, fontweight='bold',color = 'Gray')
 plt.ylabel('Training Loss and Test Accuracy',fontsize=10, fontweight='bold',color = 'Gray')
 plt.legend()
 
 # Save the figure.
-plt.savefig('output/Cross-View/DenseNet-BC-100-12-NTU-CV.png')
+plt.savefig('output/Cross-View/DenseNet-16-NTU-CV.png')
 plt.show()
