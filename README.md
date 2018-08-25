@@ -16,7 +16,7 @@ In order to train the deep neural networks in our experiments, you need to downl
  
  For example:
  
-  ```python DenseNet-MSR-Action3D-AS1.py.py ```
+  ```python DenseNet-MSR-Action3D-AS1.py```
 
 
 **Experimental results**
