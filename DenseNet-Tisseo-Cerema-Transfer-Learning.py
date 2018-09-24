@@ -34,7 +34,7 @@ nb_classes = 3
 	
 # Learning rate schedule.
 def step_decay(epoch):
-	initial_lrate = 0.001
+	initial_lrate = 3e-4
 	drop = 0.5
 	epochs_drop = 20
 	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
@@ -49,7 +49,7 @@ validation_data_dir = 'data/tisseo/validation'
 nb_train_samples = 2539
 nb_validation_samples = 2536
 epochs = 250
-batch_size = 256
+batch_size = 64
 
 
 # Load pre-trained model.
