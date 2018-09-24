@@ -35,8 +35,8 @@ nb_classes = 8
 
 # Learning rate schedule.
 def step_decay(epoch):
-	initial_lrate = 0.001
-	drop = 0.1
+	initial_lrate = 3e-4
+	drop = 0.5
 	epochs_drop = 100.0
 	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
 	return lrate
@@ -48,7 +48,7 @@ validation_data_dir = 'data/MSR-Action3D/AS1/validation'
 nb_train_samples = 3762
 nb_validation_samples = 2205
 epochs = 250
-batch_size = 128
+batch_size = 64
 
 if K.image_data_format() == 'channels_first':
     input_shape = (3, img_width, img_height)
