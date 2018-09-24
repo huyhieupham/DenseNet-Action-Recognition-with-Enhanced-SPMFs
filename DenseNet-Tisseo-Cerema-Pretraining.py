@@ -28,7 +28,7 @@ nb_classes = 21
 
 # Learning rate schedule.
 def step_decay(epoch):
-	initial_lrate = 0.001
+	initial_lrate = 3e-4
 	drop = 0.5
 	epochs_drop = 20
 	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
@@ -41,7 +41,7 @@ validation_data_dir = 'data/combination-dataset/validation'
 nb_train_samples = 12611
 nb_validation_samples = 12611
 epochs = 250
-batch_size = 128
+batch_size = 64
 
 
 if K.image_data_format() == 'channels_first':
