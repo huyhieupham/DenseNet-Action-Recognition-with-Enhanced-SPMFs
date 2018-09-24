@@ -33,8 +33,8 @@ nb_classes = 60
 
 # Learning rate schedule.
 def step_decay(epoch):
-	initial_lrate = 0.001
-	drop = 0.1
+	initial_lrate = 3e-4
+	drop = 0.5
 	epochs_drop = 100.0
 	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
 	return lrate
@@ -44,8 +44,8 @@ train_data_dir = 'data/NTU-RGB+D/Cross-View/train'
 validation_data_dir = 'data/NTU-RGB+D/Cross-View/validation'
 nb_train_samples = 37282
 nb_validation_samples = 18866
-epochs = 200
-batch_size = 256
+epochs = 250
+batch_size = 64
 
 if K.image_data_format() == 'channels_first':
     input_shape = (3, img_width, img_height)
