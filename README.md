@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository includes the codes and pre-trained models for the paper: "**_From skeleton sequences to enhanced motion maps: a new representation for 3D human action recognition with deep convolutional neural networks_"** by Huy Hieu Pham, Houssam Salmane, Louahdi Khoudour, Alain Crouzil, Pablo Zegers, and Sergio A. Velastin, which was submitted to [the 16th International Conference on Image Analysis and Recognition](https://www.aimiconf.org/iciar19/).
+This repository includes the codes and pre-trained models for the paper: "**_From skeleton sequences to enhanced motion maps: a new representation for 3D human action recognition with deep convolutional neural networks_"** by Huy Hieu Pham, Houssam Salmane, Louahdi Khoudour, Alain Crouzil, Pablo Zegers, and Sergio A. Velastin, which was submitted to [the 16th International Conference on Image Analysis and Recognition, 2019](https://www.aimiconf.org/iciar19/).
 
 
 
